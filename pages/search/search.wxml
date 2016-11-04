@@ -1,0 +1,12 @@
+<view class="search-bar">
+<form class="search-bar-form" bindsubmit="formSubmit" bindreset="formReset">
+  <view class="search-bar-box">
+    <input name="input" placeholder="检索" />
+  </view>
+    <icon type="search" size="15" color="#B2B2B2"/>
+  <view class="btn-area">
+    <button formType="submit">Submit</button>
+  </view>
+</form>
+<view class="cancel-btn">取消</view>
+</view>

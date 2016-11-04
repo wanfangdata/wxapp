@@ -1,0 +1,14 @@
+.cancel-btn{
+    display: none;
+    margin-left: 10px;
+    line-height: 28px;
+    color: #09BB07;
+    white-space: nowrap;
+}
+.search-bar-form{
+    position: relative;
+    -webkit-box-flex: 1;
+    -webkit-flex: auto;
+    flex: auto;
+    background-color: #EFEFF4;
+}
