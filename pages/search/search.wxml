@@ -10,11 +10,13 @@
 </form>
 </view>
 <view class="search-result">
-  <scroll-view class="scroll-view" scroll-x="true" style="width: 100%">
-    <view class="section" wx:for="{{paperList}}" wx:for-item="item">
-      <view class="paper-title">{{item.Title[0]}}</view>
-      <view>{{item.Abstract[0]}}</view>
-      <view>{{item.Keyword_Machine}}</view>
+  <scroll-view class="scroll-view" scroll-y="true" style="width: 100%">
+    <view class="paper-item" wx:for="{{paperList}}" wx:for-index="idx" wx:for-item="item">
+      <view class="paper-title">{{idx}}: {{item.Title[0]}}</view>
+      <view class="paper-abstract">{{item.Abstract[0]}}</view>
+      <view class="paper-keyword" wx:for="{{item.Keyword_Machine}}" wx:for-item="keyword">
+        {{keyword}}
+      </view>      
     </view>
   </scroll-view>
 </view>
