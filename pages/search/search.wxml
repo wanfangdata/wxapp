@@ -9,10 +9,18 @@
   </view>
 </form>
 </view>
+<swiper indicator-dots="true"
+  autoplay="true" interval="{{interval}}" duration="{{duration}}">
+  <block wx:for="{{imgUrls}}">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image"/>
+    </swiper-item>
+  </block>
+</swiper>
 <view class="search-result">
   <scroll-view class="scroll-view" scroll-y="true" style="width: 100%">
-    <view class="paper-item" wx:for="{{paperList}}" wx:for-index="idx" wx:for-item="item">
-      <view class="paper-title">{{idx}}: {{item.Title[0]}}</view>
+    <view class="paper-item" wx:for="{{paperList}}"  wx:for-item="item">
+      <view class="paper-title">{{item.Title[0]}}</view>
       <view class="paper-abstract">{{item.Abstract[0]}}</view>
       <view class="paper-keyword" wx:for="{{item.Keyword_Machine}}" wx:for-item="keyword">
         {{keyword}}
