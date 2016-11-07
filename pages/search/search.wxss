@@ -1,14 +1,89 @@
-.cancel-btn{
+icon {
+    display: inline-block;
+    vertical-align: middle;
+    font: normal normal normal 14px/1 "weui";
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+.search-bar {
+    position: relative;
+    width:100%;
+    padding: 8px 10px;
+    height:50px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    box-sizing: border-box;
+    background-color: #EFEFF4;
+}
+.search-bar-box {
+    position: relative;
+    padding-left: 10px;
+    padding-right: 30px;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 1;
+}
+.search-bar-box icon {
+    display: block;
+}
+.search-bar-box .search-btn{
+    position: absolute;
+    right: 5px;
+    top:8px;
+    background-color: #fff;
+    border: none;
+    width:22px;
+    height: 20px;
+    padding:0;
+}
+.search-bar-box .search-btn:after{
     display: none;
-    margin-left: 10px;
-    line-height: 28px;
-    color: #09BB07;
-    white-space: nowrap;
+}
+.search-bar-box input{
+    padding: 4px 0;
+    width: 100%;
+    height: 1.42857143em;
+    border: 0;
+    font-size: 14px;
+    line-height: 1.42857143em;
+    box-sizing: content-box;
+    background: transparent;
+}
+.search-bar:before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1px;
+    border-top: 1px solid #D7D6DC;
+    color: #D7D6DC;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+}
+.search-bar:after {
+    content: " ";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 1px;
+    border-bottom: 1px solid #D7D6DC;
+    color: #D7D6DC;
+    -webkit-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
 }
 .search-bar-form{
     position: relative;
     -webkit-box-flex: 1;
     -webkit-flex: auto;
     flex: auto;
-    background-color: #EFEFF4;
+    background-color: #ffffff;
 }

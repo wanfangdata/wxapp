@@ -11,7 +11,7 @@ Page({
     wx.navigateTo({
       url: '../search/search'
     })
-  },
+  },  
   onLoad: function () {
     console.log('onLoad')
     var that = this

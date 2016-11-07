@@ -1,12 +1,20 @@
 <view class="search-bar">
 <form class="search-bar-form" bindsubmit="formSubmit" bindreset="formReset">
   <view class="search-bar-box">
-    <input name="input" placeholder="检索" />
-  </view>
-    <icon type="search" size="15" color="#B2B2B2"/>
-  <view class="btn-area">
-    <button formType="submit">Submit</button>
+    <button class="search-btn" formType="submit">
+      <icon type="search" size="18" color="#B2B2B2"/>
+    </button>    
+    <input name="q" placeholder="请输入检索词" bindinput="bindfocus" />
+    <!--<view class="icon-clear"></view>-->
   </view>
 </form>
-<view class="cancel-btn">取消</view>
+</view>
+<view class="search-result">
+  <scroll-view class="scroll-view" scroll-x="true" style="width: 100%">
+    <view class="section" wx:for="{{paperList}}" wx:for-item="item">
+      <view class="paper-title">{{item.Title[0]}}</view>
+      <view>{{item.Abstract[0]}}</view>
+      <view>{{item.Keyword_Machine}}</view>
+    </view>
+  </scroll-view>
 </view>
