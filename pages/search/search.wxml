@@ -1,30 +1,17 @@
 <view class="search-bar">
-<form class="search-bar-form" bindsubmit="formSubmit" bindreset="formReset">
-  <view class="search-bar-box">
-    <button class="search-btn" formType="submit">
-      <icon type="search" size="18" color="#B2B2B2"/>
-    </button>    
-    <input name="q" placeholder="请输入检索词" bindinput="bindfocus" />
-    <!--<view class="icon-clear"></view>-->
-  </view>
-</form>
-</view>
-<swiper indicator-dots="true"
-  autoplay="true" interval="{{interval}}" duration="{{duration}}">
-  <block wx:for="{{imgUrls}}">
-    <swiper-item>
-      <image src="{{item}}" class="slide-image"/>
-    </swiper-item>
-  </block>
-</swiper>
-<view class="search-result">
-  <scroll-view class="scroll-view" scroll-y="true" style="width: 100%">
-    <view class="paper-item" wx:for="{{paperList}}" wx:for-idx="index" wx:for-item="item">
-      <view class="paper-title">{{item.index}}. {{item.Title}}</view>
-      <view class="paper-abstract">{{item.Abstract}}</view>
-      <view class="paper-keyword" wx:for="{{item.Keyword_Machine}}" wx:for-item="keyword">
-        {{keyword}}
-      </view>      
+  <form class="search-bar-form" bindsubmit="formSubmit" bindreset="formReset">
+    <view class="search-bar-box">
+      <button class="search-btn" formType="submit">
+        <icon type="search" size="20" color="#B2B2B2"/>
+      </button>    
+      <input name="q" placeholder="请输入检索词" bindinput="bindfocus" />
     </view>
-  </scroll-view>
+  </form>
 </view>
+<scroll-view class="search-result" scroll-y="true" style="width: 100%">
+  <view class="paper-item" wx:for="{{paperList}}" wx:for-idx="index" wx:for-item="item">
+    <view class="paper-title">{{item.index}}. {{item.Title}}</view>
+    <view class="paper-abstract">{{item.Abstract}}</view>
+    <view class="paper-keyword" wx:for="{{item.Keyword_Machine}}" wx:for-item="keyword">{{keyword}}</view>      
+  </view>
+</scroll-view>

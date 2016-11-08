@@ -17,14 +17,3 @@
     </swiper-item>
   </block>
 </swiper>
-<view class="search-result">
-  <scroll-view class="scroll-view" scroll-y="true" style="width: 100%">
-    <view class="paper-item" wx:for="{{paperList}}" wx:for-idx="index" wx:for-item="item">
-      <view class="paper-title">{{item.index}}. {{item.Title}}</view>
-      <view class="paper-abstract">{{item.Abstract}}</view>
-      <view class="paper-keyword" wx:for="{{item.Keyword_Machine}}" wx:for-item="keyword">
-        {{keyword}}
-      </view>      
-    </view>
-  </scroll-view>
-</view>
