@@ -5,6 +5,7 @@
   background: #fff;
   border-bottom:#eee solid 1px;
   z-index: 100000;
+  color:#707070;
 }
 
 .top-nav{
@@ -25,6 +26,27 @@
 .content{
     display: flex;
     flex-direction: column;
-    margin-top: 42px;
+    margin-top: 45px;
     height: 600px;
+    background-color: #f8f9fb;
+}
+.attr{
+    display: flex;
+    padding: 20px;
+    margin: 10px 0;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-transition: .3s;
+    transition: .3s;
+    background-color: #fff;
+    font-size: 18px; 
+    color:#666;   
+}
+.attr .text{
+    flex: 1;
+}
+.attr image{
+    width: 30px; 
+    height: 30px;
 }

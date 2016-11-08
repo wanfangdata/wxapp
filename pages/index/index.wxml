@@ -6,7 +6,26 @@
     </scroll-view>
 </view>
 <scroll-view scroll-y="true" class="content">
-    <view>{{intro.total}}</view>
-    <view>{{intro.update}}</view>
-    <view>{{intro.desc}}</view>
+    <view class="attr total">
+        <text class="text">
+            <text class="key">{{intro.name}}：</text>
+            <text class="value">{{intro.total}}{{intro.unit}}</text>  
+        </text> 
+        <image src="img/db.png"></image>      
+    </view>
+    <view class="attr update">
+        <text class="text">
+            <text class="key">最近更新：</text>
+            <text class="value">{{intro.update}}{{intro.unit}}</text>  
+        </text>  
+        <image src="img/db-update.png"></image>    
+    </view>
+    <view class="attr date">
+        <text class="text">
+            <text class="key">更新日期：</text>
+            <text class="value">{{intro.updateDate}}</text>
+        </text>   
+        <image style="width:27px;height:27px;margin-right:1px;" src="img/date.png"></image> 
+    </view>
+    <view class="attr desc">{{intro.desc}}</view>
 </scroll-view>
