@@ -1,26 +1,19 @@
-//index.js
-//获取应用实例
-var app = getApp()
+var resource = require('data.js');
+
 Page({
-  data: {
-    motto: '万方数据微信小程序',
-    userInfo: {}
-  },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../search/search'
-    })
-  },  
-  onLoad: function () {
-    console.log('onLoad')
-    var that = this
-    //调用应用实例的方法获取全局数据
-    app.getUserInfo(function(userInfo){
-      //更新数据
-      that.setData({
-        userInfo:userInfo
-      })
-    })
-  }
-})
+    data: {
+        resource:resource,
+        intro:resource[0]
+    },
+    tab:function(e){
+      var id = e.target.id;
+      var introObj = {};
+      for(var i = 0;i<resource.length;i++){
+         resource[i].active = resource[i].id == id?(introObj = resource[i],'active'):'';
+      }
+      this.setData({
+        resource:resource,
+        intro:introObj
+      });
+    }
+});

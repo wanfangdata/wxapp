@@ -105,7 +105,7 @@ icon {
     border: 1px #f5f5f5 solid;
     border-width: 1px 0;
     color: #3ab176;
-    margin:2px 10px 0 0;
+    margin:2px 10px 2px 0;
     font-size: 14px;
     line-height: 24px;
     padding:0 3px;

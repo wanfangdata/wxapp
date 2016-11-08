@@ -1,10 +1,12 @@
-<!--index.wxml-->
-<view class="container">
-  <view  bindtap="bindViewTap" class="userinfo">
-    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+<view class="menu">
+    <scroll-view scroll-x="true" class="top-nav">
+        <view wx:for="{{resource}}"  wx:for-item="item" class="top-btn {{item.active}}" id="{{item.id}}" bindtap="tab">
+          {{item.name}}
+        </view>
+    </scroll-view>
 </view>
+<scroll-view scroll-y="true" class="content">
+    <view>{{intro.total}}</view>
+    <view>{{intro.update}}</view>
+    <view>{{intro.desc}}</view>
+</scroll-view>
