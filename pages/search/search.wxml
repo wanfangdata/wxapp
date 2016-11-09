@@ -14,4 +14,7 @@
     <view class="paper-abstract">{{item.abstract}}</view>
     <view class="paper-keyword" wx:for="{{item.keyword}}" wx:for-item="keyword">{{keyword}}</view>      
   </view>
+  <view class="load-content" style="visibility:{{loading?'visible':'hidden'}};">
+     <text class="weui-loading"/><text class="loading-text">玩命加载中</text>
+  </view>
 </scroll-view>
