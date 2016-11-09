@@ -6,8 +6,8 @@ Page({
         intro:resource[0]
     },
     tab:function(e){
-      var id = e.target.id;
-      var introObj = {};
+      var id = e.target.id,
+          introObj = {};
       for(var i = 0;i<resource.length;i++){
          resource[i].active = resource[i].id == id?(introObj = resource[i],'active'):'';
       }

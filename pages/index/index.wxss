@@ -1,17 +1,14 @@
-.menu{
-  position: fixed;
-  top: 0px;
-  width: 100%;
-  background: #fff;
-  border-bottom:#eee solid 1px;
-  z-index: 100000;
-  color:#707070;
-}
-
 .top-nav{
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    background: #fff;
+    border-bottom:#eee solid 1px;
+    z-index: 100000;
+    color:#707070;
     white-space: nowrap;
-    width: 95%;
     margin: 0 auto;
+    box-sizing: 'border';
 }
 
 .top-btn{

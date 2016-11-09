@@ -1,10 +1,8 @@
-<view class="menu">
-    <scroll-view scroll-x="true" class="top-nav">
-        <view wx:for="{{resource}}"  wx:for-item="item" class="top-btn {{item.active}}" id="{{item.id}}" bindtap="tab">
-          {{item.name}}
-        </view>
-    </scroll-view>
-</view>
+<scroll-view scroll-x="true" class="top-nav">
+    <view wx:for="{{resource}}"  wx:for-item="item" class="top-btn {{item.active}}" id="{{item.id}}" bindtap="tab">
+        {{item.name}}
+    </view>
+</scroll-view>
 <scroll-view scroll-y="true" class="content">
     <view class="attr total">
         <text class="text">

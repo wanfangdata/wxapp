@@ -89,10 +89,13 @@ icon {
     background-color: #ffffff;
 }
 .search-result{
-    margin-top: 50px;
+    width: 100%;
+    padding-top: 50px;
     display: flex;
     flex-direction: column;
     background-color: #f8f9fb;
+    color:#707070;
+    height:100%;
 }
 .paper-item{
     padding: 20px;
@@ -104,7 +107,6 @@ icon {
     transition: .3s;
     background-color: #fff;
     font-size: 18px; 
-    color:#666;   
 }
 .paper-title{
     color: #333;
@@ -112,7 +114,6 @@ icon {
     font-size: 18px;
 }
 .paper-abstract{
-    color: #666;
     line-height: 24px;
     font-size: 16px;
 }
@@ -126,4 +127,5 @@ icon {
     line-height: 24px;
     padding:0 3px;
     display: inline-block;
+    border-radius:3px;
 }

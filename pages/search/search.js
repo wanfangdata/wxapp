@@ -1,42 +1,66 @@
-//logs.js
-var util = require('../../utils/util.js')
-var testData = require('data.js')
+var testData = require('data.js');
+
 Page({
   data: {
-    imgUrls: [
-      'http://earth.wanfangdata.com.cn/admin/File/Download?fileName=dq-01.jpg',
-      'http://earth.wanfangdata.com.cn/admin/File/Download?fileName=2016%e5%a4%a7%e6%b0%94%e5%a4%8d%e5%90%88%e6%b1%a1%e6%9f%93.gif',
-      'http://http://earth.wanfangdata.com.cn/Areas/admin/Content/UEditor/dialogs/template/images/ad01.jpg'
-    ],
-    indicatorDots: false,
-    autoplay: false,
-    interval: 5000,
-    duration: 1000,
-
+    page:1,
+    rows:5,
     paperList:[]
   },
-  formSubmit: function(e) {
-    var query = e.detail.value;
-    wx.request({
-      url: 'http://168.160.184.180:8983/solr/WFPeriodical/select',
-      data: {
-        q: query.q ,
-        wt: 'json',
-        rows:5,
-        start:10
-      },
-      header: {'Content-Type': 'application/json'},
-      success: function(res) {console.log(res.data);}
-    });
+  request:function(q){
+    return {
+      p:this.data.page,
+      q:q,
+      wt:'json',
+      rows:this.data.rows,
+      start:this.data.rows*(this.data.page-1)
+    };
+  },
+  loadData:function(){
     var paper = {} ,
-        paperList = [];
-    for(var i = 0;i<testData.response.docs.length;i++){
-      paper = testData.response.docs[i];
-      paper.index = i + 1;
+        paperList = [],
+        requestData = this.request(),
+        docs = testData.response.docs.slice(
+          requestData.start,
+          requestData.start + requestData.rows),
+        sliceCount =function(parm,count,suffix){
+            var count = count||50;
+            return parm.length>count?(suffix?parm.slice(0,count)+suffix:parm.slice(0,count)):parm;
+        }; 
+    //if()
+    for(var i = 0;i<docs.length;i++){
+      paper = docs[i];
+      paper.index = requestData.start + i +1;
+      paper.title = sliceCount(paper.Title[0],20,'...');
+      paper.abstract = sliceCount(paper.Abstract?paper.Abstract[0]:'',50,'...');
+      paper.keyword = sliceCount(paper.Keyword_Machine,5);
       paperList.push(paper);
     }
+    return paperList;
+  },
+  refresh:function(){
+    var pg = this;
+    setTimeout (function(){
+      pg.setData({
+        paperList:pg.data.paperList.concat(pg.loadData())
+      });
+      wx.hideNavigationBarLoading();
+    },800);    
+  },
+  formSubmit: function(e) {
+    this.setData({page:1});
+    wx.showToast({
+        title: '玩命加载中...',
+        icon: 'loading',
+        duration: 700
+    });     
+    this.refresh();
+  },
+  lower:function(e){
+    console.log(this.data.page);
+    wx.showNavigationBarLoading();
     this.setData({
-      paperList:paperList
+      page:this.data.page+1
     });
+    this.refresh();
   }
 })

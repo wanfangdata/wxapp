@@ -8,10 +8,10 @@
     </view>
   </form>
 </view>
-<scroll-view class="search-result" scroll-y="true" style="width: 100%">
+<scroll-view class="search-result" scroll-y="true" style="height: 600px;" bindscrolltolower="lower"  lower-threshold="5" >
   <view class="paper-item" wx:for="{{paperList}}" wx:for-idx="index" wx:for-item="item">
-    <view class="paper-title">{{item.index}}. {{item.Title}}</view>
-    <view class="paper-abstract">{{item.Abstract}}</view>
-    <view class="paper-keyword" wx:for="{{item.Keyword_Machine}}" wx:for-item="keyword">{{keyword}}</view>      
+    <view class="paper-title">{{item.index}}. {{item.title}}</view>
+    <view class="paper-abstract">{{item.abstract}}</view>
+    <view class="paper-keyword" wx:for="{{item.keyword}}" wx:for-item="keyword">{{keyword}}</view>      
   </view>
 </scroll-view>
