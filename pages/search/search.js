@@ -2,6 +2,7 @@ var testData = require('data.js');
 
 Page({
   data: {
+    loading:false,
     page:1,
     rows:5,
     paperList:[]
@@ -41,7 +42,8 @@ Page({
     var pg = this;
     setTimeout (function(){
       pg.setData({
-        paperList:init?pg.loadData():pg.data.paperList.concat(pg.loadData())
+        paperList:init?pg.loadData():pg.data.paperList.concat(pg.loadData()),
+        loading:false
       });
       wx.hideNavigationBarLoading();
     },800);    
@@ -55,11 +57,11 @@ Page({
     });     
     this.refresh(true);
   },
-  lower:function(e){
-    console.log(this.data.page);
+  lower:function(e){   
     wx.showNavigationBarLoading();
     this.setData({
-      page:this.data.page+1
+      page:this.data.page+1,
+      loading:true
     });
     this.refresh();
   }
