@@ -37,11 +37,11 @@ Page({
     }
     return paperList;
   },
-  refresh:function(){
+  refresh:function(init){
     var pg = this;
     setTimeout (function(){
       pg.setData({
-        paperList:pg.data.paperList.concat(pg.loadData())
+        paperList:init?pg.loadData():pg.data.paperList.concat(pg.loadData())
       });
       wx.hideNavigationBarLoading();
     },800);    
@@ -53,7 +53,7 @@ Page({
         icon: 'loading',
         duration: 700
     });     
-    this.refresh();
+    this.refresh(true);
   },
   lower:function(e){
     console.log(this.data.page);
