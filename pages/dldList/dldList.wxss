@@ -1,0 +1,43 @@
+.weui-media-box {
+    padding: 8px 20px;
+    margin: 10px 0;
+    position: relative;
+    background-color: #fff;
+}
+.weui-media-box__title {
+    font-weight: 400;
+    font-size: 17px;
+    width: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
+    margin-bottom: 5px;
+}
+.weui-media-box__desc {
+    color: #999999;
+    font-size: 13px;
+    line-height: 1.2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+.weui-media-box__info {
+    margin-top: 10px;
+    padding-bottom: 5px;
+    font-size: 13px;
+    color: #CECECE;
+    line-height: 1em;
+    list-style: none;
+    overflow: hidden;
+}
+.weui-media-box__info__meta {
+    float: left;
+    padding-right: 1em;
+}
+.content{
+   height: 100%;
+   background-color: #f8f9fb;
+}

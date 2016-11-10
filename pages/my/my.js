@@ -1,7 +1,6 @@
 var app = getApp()
 Page({
   data: {
-    motto: '万方数据微信小程序',
     userInfo: {}
   },
   //事件处理函数
@@ -20,5 +19,22 @@ Page({
         userInfo:userInfo
       })
     })
+  },
+  tap:function(){
+    wx.showModal({
+      title: '提示',
+      content: '啥也没有',
+      showCancel:false,
+      success: function(res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+        }
+      }
+    });
+  },
+  gotoDownloadList:function(e){
+    wx.navigateTo({
+      url: '../dldList/dldList'
+    });
   }
 })

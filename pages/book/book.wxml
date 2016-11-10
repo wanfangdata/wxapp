@@ -1,9 +1,9 @@
 <swiper indicator-dots="true" autoplay="true"  duration="3000">
   <block wx:for="{{imgUrls}}">
     <swiper-item>
-      <image src="{{item[0]}}" class="slide-image"/>
-      <image src="{{item[1]}}" class="slide-image"/>
-      <image src="{{item[2]}}" class="slide-image"/>
+      <image src="{{item[0]}}" class="slide-image" bindtap="tap"/>
+      <image src="{{item[1]}}" class="slide-image" bindtap="tap"/>
+      <image src="{{item[2]}}" class="slide-image" bindtap="tap"/>
     </swiper-item>
   </block>
 </swiper>

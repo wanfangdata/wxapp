@@ -1,9 +1,62 @@
 <view class="container">
-  <view  bindtap="bindViewTap" class="userinfo">
+  <view class="userinfo">
     <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
     <text class="userinfo-nickname">{{userInfo.nickName}}</text>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
 </view>
+<view class="weui-grids">
+        <view  class="weui-grid"  bindtap="tap">
+            <view class="weui-grid__icon">
+                <image class="icon" src="img/money_bag_fill.png" background-size="cover"></image>
+            </view>
+            <view class="weui-grid__label">余额</view>
+        </view>
+        <view  class="weui-grid"  bindtap="tap">
+            <view class="weui-grid__icon">
+                <image class="icon" src="img/coin.png" background-size="cover"></image>
+            </view>
+            <view class="weui-grid__label">万方币</view>
+        </view>
+        <view  class="weui-grid"  bindtap="tap">
+            <view class="weui-grid__icon">
+                <image class="icon" src="img/settings.png" background-size="cover"></image>
+            </view>
+            <view class="weui-grid__label">设置</view>
+        </view>
+        <view  class="weui-grid"  bindtap="tap">
+            <view class="weui-grid__icon">
+                <image class="icon" src="img/cart_fill.png" background-size="cover"></image>
+            </view>
+            <view class="weui-grid__label">购物车</view>
+        </view>
+        <view  class="weui-grid"  bindtap="tap">
+            <view class="weui-grid__icon">
+                <image class="icon" src="img/redpacket_fill.png" background-size="cover"></image>
+            </view>
+            <view class="weui-grid__label">红包</view>
+        </view>
+        <view  class="weui-grid"  bindtap="gotoDownloadList">
+            <view class="weui-grid__icon">
+                <image class="icon" src="img/copy.png" background-size="cover"></image>
+            </view>
+            <view class="weui-grid__label">下载列表</view>
+        </view>
+        <view  class="weui-grid"  bindtap="tap">
+            <view class="weui-grid__icon">
+                <image class="icon" src="img/favor_fill.png" background-size="cover"></image>
+            </view>
+            <view class="weui-grid__label">我的收藏</view>
+        </view>
+        <view  class="weui-grid"  bindtap="tap">
+            <view class="weui-grid__icon">
+                <image class="icon" src="img/service_fill.png" background-size="cover"></image>
+            </view>
+            <view class="weui-grid__label">客服</view>
+        </view>
+        <view  class="weui-grid"  bindtap="tap">
+            <view class="weui-grid__icon">
+                <image class="icon" src="img/1111.png" background-size="cover"></image>
+            </view>
+            <view class="weui-grid__label">双十一</view>
+        </view>
+    </view>

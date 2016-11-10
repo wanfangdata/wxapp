@@ -1,6 +1,3 @@
-
-var util = require('../../utils/util.js')
-
 Page({
   data: {
     imgUrls: [
@@ -12,5 +9,15 @@ Page({
   },
   onLoad: function(){
 
+  },
+  tap:function(){
+    wx.showActionSheet({
+      itemList: ['加入购物车', '直接购买'],
+      success: function(res) {
+        if (!res.cancel) {
+          console.log(res.tapIndex)
+        }
+      }
+    });
   }
 })

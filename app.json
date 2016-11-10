@@ -4,7 +4,8 @@
     "pages/search/search",
     "pages/detail/detail",
     "pages/book/book",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/dldList/dldList"
   ],
   "tabBar":{
     "color":"#707070",
@@ -22,7 +23,7 @@
         "iconPath": "img/search.png",
         "selectedIconPath": "img/search-selected.png"
     },{
-      "text": "图书",
+      "text": "期刊",
         "pagePath": "pages/book/book",
         "iconPath": "img/book.png",
         "selectedIconPath": "img/book-selected.png"

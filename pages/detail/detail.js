@@ -10,6 +10,12 @@ Page({
     },
     paper:{}
   },
+  setView:function(){
+      this.setData({text:{
+        key:'view',
+        value:'去下载列表查看'
+      }});
+  },
   onLoad: function(option){
     var that = this;
     var list = wx.getStorageSync(this.data.storageKey); 
@@ -24,10 +30,7 @@ Page({
     if(list&&list.length>0&&list.some(function(item){
       return item.id == that.data.paper.Id;
     })){
-      this.setData({text:{
-        key:'view',
-        value:'去下载列表查看'
-      }});
+      this.setView();
     }
   },
   online:function(){
@@ -50,7 +53,7 @@ Page({
     var that = this,
         action = {
           view:function(){
-            wx.navigateTo({url: '../my/my'});
+            wx.navigateTo({url: '../dldList/dldList'});
           },
           download:function(){
             wx.showToast({
@@ -62,7 +65,9 @@ Page({
                 paper = {
                     id:that.data.paper.Id,
                     title:that.data.paper.Title[0],
-                    date:new Date().toLocaleString()
+                    date:new Date().toLocaleString(),
+                    creator:that.data.paper.Creator,
+                    intro:that.data.paper.Abstract?that.data.paper.Abstract[0]:''
                 };
             if(list&&list.length>0){
               list.push(paper);
@@ -72,6 +77,7 @@ Page({
             wx.setStorageSync(that.data.storageKey, list);
             setTimeout(function(){
               that.successAnimation();
+              that.setView();
             },2000);
           }
         };

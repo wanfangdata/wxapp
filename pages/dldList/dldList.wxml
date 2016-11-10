@@ -1,0 +1,10 @@
+<view class="content">
+<view class="weui-media-box weui-media-box_text" wx:for="{{paperList}}"  wx:for-item="item" id="{{item.id}}" bindtap="tap">
+    <view class="weui-media-box__title">{{item.title}}</view>
+    <view class="weui-media-box__desc">{{item.intro}}</view>
+    <view class="weui-media-box__info">
+        <text class="weui-media-box__info__meta">时间 {{item.date}}</text>
+        <text class="weui-media-box__info__meta weui-media-box__info__meta_extra">作者 {{item.creator}}</text>
+    </view>
+</view>
+</view>
