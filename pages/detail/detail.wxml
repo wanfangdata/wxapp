@@ -1,0 +1,55 @@
+<view class="content">
+    <view class="button-wrapper">
+        <button type="primary" size="mini" plain="ture"
+         bindtap="online"  style="border-right:none;background-color: #fff; ">在线阅读
+        </button>
+        <button type="primary" size="mini" plain="ture" id="{{text.key}}
+           bindtap="tap"  style="background-color: #fff;">{{text.value}}
+        </button>
+    </view>
+    <view class="feild">
+        <view class="key">标题</view>
+        <view class="value">{{paper.Title[0]}}</view> 
+    </view>
+    <view class="feild">
+        <view class="key">摘要</view>
+        <view class="value">{{paper.Abstract?paper.Abstract[0]:''}}</view> 
+    </view>
+    <view class="feild">
+        <view class="key">DOI</view>
+        <view class="value">{{paper.DOI}}</view>   
+    </view>
+    <view class="feild">
+        <view class="key">作者</view>
+        <view class="value">{{paper.Creator}}</view>   
+    </view>    
+    <view class="feild">
+        <view class="key">作者单位</view>
+        <view class="value">{{paper.Organization?paper.Organization[0]:''}}</view>  
+    </view>
+    <view class="feild">
+        <view class="key">刊名</view>
+        <view class="value">{{paper.Source[0]}}</view>  
+    </view>
+    <view class="feild">
+        <view class="key">年，卷(期)</view>
+        <view class="value">{{paper.PeriodicalIssue}}</view>   
+    </view>
+    <view class="feild">
+        <view class="key">分类号</view>
+        <view class="value">{{paper.CLCNumber_Machine}}</view>    
+    </view>
+        <view class="feild">
+        <view class="key">关键词</view>
+        <view class="value">{{paper.Keyword}}</view>  
+    </view>
+        <view class="feild">
+        <view class="key">在线出版日期</view>
+        <view class="value">{{paper.WFPublishDate}}</view>   
+    </view>
+    <view class="feild">
+        <view class="key">基金项目</view>
+        <view class="value">{{paper.Fund}}</view>  
+    </view>
+</view>
+<view class="msg {{animation}}">下载成功</view>

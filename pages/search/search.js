@@ -32,6 +32,7 @@ Page({
     paperList.map(function(paper,i){
        result.push({
          index:start + i +1,
+         id:paper.Id,
          title:sliceCount(paper.Title[0],20,'...'),
          abstr : sliceCount(paper.Abstract?paper.Abstract[0]:'',50,'...'),
          keyword : sliceCount(paper.Keyword_Machine,5)
@@ -83,6 +84,11 @@ Page({
       loading:true
     });
     this.refresh();
+  },
+  detail:function(e){
+    wx.navigateTo({
+      url: '../detail/detail?id='+e.target.id
+    });
   },
   onLoad: function () {
     this.init();

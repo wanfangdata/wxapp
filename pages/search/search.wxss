@@ -109,7 +109,7 @@ icon {
     font-size: 18px; 
 }
 .paper-title{
-    color: #333;
+    color: #1296db;
     line-height: 24px;
     font-size: 18px;
 }

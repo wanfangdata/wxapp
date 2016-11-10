@@ -27,7 +27,7 @@
         "iconPath": "img/book.png",
         "selectedIconPath": "img/book-selected.png"
     },{
-      "text": "账号",
+      "text": "我的",
         "pagePath": "pages/my/my",
         "iconPath": "img/my.png",
         "selectedIconPath": "img/my-selected.png"

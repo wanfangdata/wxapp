@@ -1,0 +1,10 @@
+swiper-item{
+    display:flex;
+}
+.slide-image{
+    width:100px;
+    height: 150px;
+    padding:0 10px;
+    flex: 1;
+}
+
