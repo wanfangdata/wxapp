@@ -36,7 +36,7 @@ Page({
   online:function(){
     wx.showModal({
       title: '微信小程序暂不支持',
-      content: '宝宝心里苦啊',
+      content: '哈哈哈',
       cancelText:'哈哈哈',
       confirmText:'同情你',
       success: function(res) {
@@ -47,7 +47,10 @@ Page({
   successAnimation:function(){
     var that = this;
     that.setData({animation:'animation'});
-    setTimeout(function(){that.setData({animation:''});},3000);
+    setTimeout(function(){
+      that.setData({animation:''});
+      that.setView();
+    },3000);
   }, 
   tap:function(e){
     var that = this,
@@ -76,12 +79,19 @@ Page({
             }
             wx.setStorageSync(that.data.storageKey, list);
             setTimeout(function(){
-              that.successAnimation();
-              that.setView();
+              that.successAnimation();              
             },2000);
           }
         };
-    action[e.target.id]();
+    console.log(e.target.id);
+    //编译后不支持索引器
+    if(e.target.id=='download'){
+      console.log('download');
+      action.download();
+    }else{
+      console.log('view');
+      action.view()
+    }
   },
   onReady: function() {    
     wx.setNavigationBarTitle({
