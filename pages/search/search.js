@@ -1,11 +1,15 @@
 var testData = require('data.js');
 
 Page({
-  data: {
-    loading:false,
-    page:1,
-    rows:5,
-    paperList:[]
+  data: {},
+  init:function(){
+    this.setData({
+      loading:false,
+      more:true,
+      page:1,
+      rows:5,
+      paperList:[]
+    });
   },
   request:function(q){
     return {
@@ -16,40 +20,55 @@ Page({
       start:this.data.rows*(this.data.page-1)
     };
   },
-  loadData:function(){
-    var paper = {} ,
-        paperList = [],
-        requestData = this.request(),
-        docs = testData.response.docs.slice(
-          requestData.start,
-          requestData.start + requestData.rows),
+  parseFeild:function(paperList,start){
+    var result = [],
         sliceCount =function(parm,count,suffix){
             var count = count||50;
-            return parm.length>count?(suffix?parm.slice(0,count)+suffix:parm.slice(0,count)):parm;
-        }; 
-    //if()
-    for(var i = 0;i<docs.length;i++){
-      paper = docs[i];
-      paper.index = requestData.start + i +1;
-      paper.title = sliceCount(paper.Title[0],20,'...');
-      paper.abstract = sliceCount(paper.Abstract?paper.Abstract[0]:'',50,'...');
-      paper.keyword = sliceCount(paper.Keyword_Machine,5);
-      paperList.push(paper);
-    }
-    return paperList;
+            return parm.length>count?(suffix?
+            parm.slice(0,count)+suffix:
+            parm.slice(0,count)):
+            parm;
+        }
+    paperList.map(function(paper,i){
+       result.push({
+         index:start + i +1,
+         title:sliceCount(paper.Title[0],20,'...'),
+         abstr : sliceCount(paper.Abstract?paper.Abstract[0]:'',50,'...'),
+         keyword : sliceCount(paper.Keyword_Machine,5)
+       });
+    });
+    return result;
+  },
+  loadData:function(){
+    var requestData = this.request(),
+        paperList = testData.response.docs.slice(
+          requestData.start,
+          requestData.start + requestData.rows);
+    return this.parseFeild(paperList,requestData.start);
+  },
+  stop:function(){
+    this.setData({
+      more:false
+    });
+    wx.hideNavigationBarLoading();
   },
   refresh:function(init){
-    var pg = this;
+    var pg = this,
+        paperList = pg.loadData();
+    if(paperList.length==0){
+      pg.stop();
+      return;
+    }
     setTimeout (function(){
       pg.setData({
-        paperList:init?pg.loadData():pg.data.paperList.concat(pg.loadData()),
+        paperList:init?paperList:pg.data.paperList.concat(paperList),
         loading:false
       });
       wx.hideNavigationBarLoading();
     },800);    
   },
   formSubmit: function(e) {
-    this.setData({page:1});
+    this.init();
     wx.showToast({
         title: '玩命加载中...',
         icon: 'loading',
@@ -64,5 +83,8 @@ Page({
       loading:true
     });
     this.refresh();
+  },
+  onLoad: function () {
+    this.init();
   }
 })

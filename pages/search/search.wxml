@@ -8,13 +8,14 @@
     </view>
   </form>
 </view>
-<scroll-view class="search-result" scroll-y="true" style="height: 1042rpx;" bindscrolltolower="lower"  lower-threshold="5" >
+<scroll-view class="search-result" scroll-y="true" style="height: 1042rpx;" bindscrolltolower="lower"  lower-threshold="0" >
   <view class="paper-item" wx:for="{{paperList}}" wx:for-idx="index" wx:for-item="item">
     <view class="paper-title">{{item.index}}. {{item.title}}</view>
-    <view class="paper-abstract">{{item.abstract}}</view>
+    <view class="paper-abstract">{{item.abstr}}</view>
     <view class="paper-keyword" wx:for="{{item.keyword}}" wx:for-item="keyword">{{keyword}}</view>      
   </view>
   <view class="load-content" style="display:{{loading?'block':'none'}};">
-     <text class="weui-loading"/><text class="loading-text">玩命加载中</text>
+     <text class="weui-loading" style="display:{{more?'inline-block':'none'}};"></text>
+     <text class="loading-text">{{more?'玩命加载中':'没有数据了'}}</text>
   </view>
 </scroll-view>
