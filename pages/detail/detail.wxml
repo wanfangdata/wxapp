@@ -4,7 +4,10 @@
          bindtap="online"  style="border-right:none;background-color: #fff; ">在线阅读
         </button>
         <button type="primary" size="mini" plain="ture" id="{{text.key}}
-           bindtap="tap"  style="background-color: #fff;">{{text.value}}
+           bindtap="download"  style="background-color: #fff;display:{{downloaded?'none':'inline-block'}}">下载
+        </button>
+        <button type="primary" size="mini" plain="ture" id="{{text.key}}
+           bindtap="view"  style="background-color: #fff;display:{{downloaded?'inline-block':'none'}}">去下载列表查看
         </button>
     </view>
     <view class="feild">

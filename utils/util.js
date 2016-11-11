@@ -16,8 +16,15 @@ function formatNumber(n) {
   return n[1] ? n : '0' + n
 }
 
+function timeout(ms) {
+  return new Promise((resolve, reject) => {
+    setTimeout(resolve, ms, 'done');
+  });
+}
+
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  timeout:timeout
 };
 
 

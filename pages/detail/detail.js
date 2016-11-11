@@ -1,36 +1,25 @@
 var testData = require('../search/data.js');
-
+var util = require('../../utils/util.js');
 Page({
   data: {
     animation:'',
     storageKey:'downloadList',
-    text:{
-      key:'download',
-      value:'下载'
-    },
+    downloaded:false,
     paper:{}
-  },
-  setView:function(){
-      this.setData({text:{
-        key:'view',
-        value:'去下载列表查看'
-      }});
   },
   onLoad: function(option){
     var that = this;
     var list = wx.getStorageSync(this.data.storageKey); 
     testData.response.docs.map(function(paper){
       if(paper.Id === option.id){
-        that.setData({
-          paper : paper
-        });
+        that.setData({paper : paper});
         return;
       }
     }); 
     if(list&&list.length>0&&list.some(function(item){
       return item.id == that.data.paper.Id;
     })){
-      this.setView();
+      this.setData({downloaded:true});
     }
   },
   online:function(){
@@ -47,51 +36,38 @@ Page({
   successAnimation:function(){
     var that = this;
     that.setData({animation:'animation'});
-    setTimeout(function(){
+    util.timeout(1000).then((value) => {
       that.setData({animation:''});
-      that.setView();
-    },3000);
+      that.setData({downloaded:true});
+    });     
   }, 
-  tap:function(e){
-    var that = this,
-        action = {
-          view:function(){
-            wx.navigateTo({url: '../dldList/dldList'});
-          },
-          download:function(){
-            wx.showToast({
-              title: '玩命下载中...',
-              icon: 'loading',
-              duration: 2000
-            });
-            var list = wx.getStorageSync(that.data.storageKey),
-                paper = {
-                    id:that.data.paper.Id,
-                    title:that.data.paper.Title[0],
-                    date:new Date().toLocaleString(),
-                    creator:that.data.paper.Creator,
-                    intro:that.data.paper.Abstract?that.data.paper.Abstract[0]:''
-                };
-            if(list&&list.length>0){
-              list.push(paper);
-            }else{
-              list = [paper];
-            }
-            wx.setStorageSync(that.data.storageKey, list);
-            setTimeout(function(){
-              that.successAnimation();              
-            },2000);
-          }
+  download:function(){
+    var that = this;
+    wx.showToast({
+        title: '玩命下载中...',
+        icon: 'loading',
+        duration: 0
+    });
+    var list = wx.getStorageSync(that.data.storageKey),
+        paper = {
+            id:that.data.paper.Id,
+            title:that.data.paper.Title[0],
+            date:new Date().toLocaleString(),
+            creator:that.data.paper.Creator,
+            intro:that.data.paper.Abstract?that.data.paper.Abstract[0]:''
         };
-    console.log(e.target.id);
-    //编译后不支持索引器
-    if(e.target.id=='download'){
-      console.log('download');
-      action.download();
+    if(list&&list.length>0){
+      list.push(paper);
     }else{
-      console.log('view');
-      action.view()
+      list = [paper];
     }
+    wx.setStorageSync(that.data.storageKey, list);
+    util.timeout(2000).then((value) => {
+      that.successAnimation();  
+    });            
+  },
+  view:function(){
+    wx.navigateTo({url: '../dldList/dldList'});
   },
   onReady: function() {    
     wx.setNavigationBarTitle({

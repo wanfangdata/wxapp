@@ -7,4 +7,7 @@ swiper-item{
     padding:0 10px;
     flex: 1;
 }
+page{
+    overflow: hidden;
+}
 
